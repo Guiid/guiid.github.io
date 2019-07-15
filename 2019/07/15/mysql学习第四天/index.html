@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="使用mysqli()类，返回一个对象 1@$db = new mysqli(&amp;apos;127.0.0.1,&amp;apos;root&amp;apos;,&amp;apos;root&amp;apos;&amp;apos;)  面向过程，返回一个资源 1@$db=mysqli_connect(&amp;apos;127.0.0.1&amp;apos;,&amp;apos;root&amp;apos;,&amp;apos;&amp;apos;root);  MySQL错误提示 1m">
+<meta name="description" content="索引 作用作用增加搜索速度确保数据唯一性，所有有四种 主键索引(PRIMARY KEY)、唯一索引(UNIQUE)、常规索引(INDEX)、全文索引(FULLTEXT)； 主键索引 数据表会根据主键的唯一性来标识唯一的记录；每张表只能指示唯一的主键且不能为空 1id INT(10) AUTO_INCREMENT UNIGEND NOT NULL PRIMARY KEY  唯一索引唯一索引和主键主键">
 <meta property="og:type" content="article">
-<meta property="og:title" content="连接数据库">
-<meta property="og:url" content="http://yoursite.com/2019/07/15/连接数据库/index.html">
+<meta property="og:title" content="mysql学习第四天">
+<meta property="og:url" content="http://yoursite.com/2019/07/15/mysql学习第四天/index.html">
 <meta property="og:site_name" content="Guiid">
-<meta property="og:description" content="使用mysqli()类，返回一个对象 1@$db = new mysqli(&amp;apos;127.0.0.1,&amp;apos;root&amp;apos;,&amp;apos;root&amp;apos;&amp;apos;)  面向过程，返回一个资源 1@$db=mysqli_connect(&amp;apos;127.0.0.1&amp;apos;,&amp;apos;root&amp;apos;,&amp;apos;&amp;apos;root);  MySQL错误提示 1m">
+<meta property="og:description" content="索引 作用作用增加搜索速度确保数据唯一性，所有有四种 主键索引(PRIMARY KEY)、唯一索引(UNIQUE)、常规索引(INDEX)、全文索引(FULLTEXT)； 主键索引 数据表会根据主键的唯一性来标识唯一的记录；每张表只能指示唯一的主键且不能为空 1id INT(10) AUTO_INCREMENT UNIGEND NOT NULL PRIMARY KEY  唯一索引唯一索引和主键主键">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-15T12:48:14.198Z">
+<meta property="og:updated_time" content="2019-07-15T13:08:19.233Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="连接数据库">
-<meta name="twitter:description" content="使用mysqli()类，返回一个对象 1@$db = new mysqli(&amp;apos;127.0.0.1,&amp;apos;root&amp;apos;,&amp;apos;root&amp;apos;&amp;apos;)  面向过程，返回一个资源 1@$db=mysqli_connect(&amp;apos;127.0.0.1&amp;apos;,&amp;apos;root&amp;apos;,&amp;apos;&amp;apos;root);  MySQL错误提示 1m">
+<meta name="twitter:title" content="mysql学习第四天">
+<meta name="twitter:description" content="索引 作用作用增加搜索速度确保数据唯一性，所有有四种 主键索引(PRIMARY KEY)、唯一索引(UNIQUE)、常规索引(INDEX)、全文索引(FULLTEXT)； 主键索引 数据表会根据主键的唯一性来标识唯一的记录；每张表只能指示唯一的主键且不能为空 1id INT(10) AUTO_INCREMENT UNIGEND NOT NULL PRIMARY KEY  唯一索引唯一索引和主键主键">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/15/连接数据库/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/15/mysql学习第四天/">
 
 
 
 
 
-  <title>连接数据库 | Guiid</title>
+  <title>mysql学习第四天 | Guiid</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/连接数据库/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/mysql学习第四天/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Guiid">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">连接数据库</h1>
+          <h1 class="post-title" itemprop="name headline">mysql学习第四天</h1>
         
 
         <div class="post-meta">
@@ -261,7 +261,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-15T20:47:37+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-15T21:08:08+08:00">
                 2019-07-15
               </time>
             
@@ -299,35 +299,30 @@
       
 
       
-        <p>使用mysqli()类，返回一个对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@$db = new mysqli(&apos;127.0.0.1,&apos;root&apos;,&apos;root&apos;&apos;)</span><br></pre></td></tr></table></figure>
+        <h6 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h6><hr>
+<p>作用作用增加搜索速度确保数据唯一性，所有有四种</p>
+<p>主键索引(PRIMARY KEY)、唯一索引(UNIQUE)、常规索引(INDEX)、全文索引(FULLTEXT)；</p>
+<p><strong>主键索引</strong></p>
+<p>数据表会根据主键的唯一性来标识唯一的记录；每张表只能指示唯一的主键且不能为空</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id INT(10) AUTO_INCREMENT UNIGEND NOT NULL PRIMARY KEY</span><br></pre></td></tr></table></figure>
 
-<p>面向过程，返回一个资源</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@$db=mysqli_connect(&apos;127.0.0.1&apos;,&apos;root&apos;,&apos;&apos;root);</span><br></pre></td></tr></table></figure>
+<h6 id="唯一索引"><a href="#唯一索引" class="headerlink" title="唯一索引"></a>唯一索引</h6><p>唯一索引和主键主键索引有点类似，也是为了防止数据重复，不过主键索引在一张表中只能存在一个，二唯一索引可以存在多个，且唯一索引的列是不允许数据重复的，在创建一个列的是就应该加上UBIQUE，防止数据重复；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id int(10) not null UNIQUE</span><br></pre></td></tr></table></figure>
 
-<p><strong>MySQL错误提示</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqli_connect_errno()</span><br></pre></td></tr></table></figure>
+<h6 id="常规索引"><a href="#常规索引" class="headerlink" title="常规索引"></a>常规索引</h6><p>常规索引是比较重要的，在索引优化是首先应该考虑的类容。它可以是我们的数据库得到最大的性能提升。但是占用的磁盘比较多。表示方式为index或者key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INDEX ind (字段1)</span><br></pre></td></tr></table></figure>
 
-<p>连接mysql数据库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$db-&gt;select_db(db_name)</span><br></pre></td></tr></table></figure>
+<h5 id="全文索引"><a href="#全文索引" class="headerlink" title="全文索引"></a>全文索引</h5><p>全文索引是后期出现的关键字。作用是使用户能够在不使用模式匹配操作的前提下搜索单词或短语。全文索引是FULLTEXT类型，只能用于VHAR、VARCHAR、TEXT类型上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FULLTEXT (字段名)</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql_select_db($db,db_name)</span><br></pre></td></tr></table></figure>
-
-<p><strong>查询数据库</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$result=$db-&gt;query(&quot;wwww); 返回结果对象</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$result=mysqli_query(&apos;$db,&apos;&apos;wwww);  返回结果资源</span><br></pre></td></tr></table></figure>
-
-<p><strong>显示返回的行数</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$num=$result-&gt;num_rows;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$num=mysql_num_rows($result);</span><br></pre></td></tr></table></figure>
-
-<p><strong>断开数据库</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$db-&gt;colse()</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqli_colse($db)</span><br></pre></td></tr></table></figure>
-
+<h6 id="建表原则"><a href="#建表原则" class="headerlink" title="建表原则"></a>建表原则</h6><p>为我们的表的读写速度更快，更直观，我们建表的时候需要遵循一些简单的规则，在我们开始写代码之前应该仔细的想好建立什么表，怎么设置里面的字段。往往我们可以借鉴前人的一些规则。</p>
+<ol>
+<li>列中有相似的数据则一定要清除掉，重新建立一张表，如果有重复的内容则应该及时拆分出来。</li>
+<li>列中有数据想关联的表也需要新建一张表；</li>
+<li>每条记录都要有一个主键，也就是一行要有一个独一无二的数据做主键。</li>
+<li>如果有因为拆分出来的主键，则新表一定要有一个外键。</li>
+<li>于主键没关系的内容则需要重新建立一张新表；</li>
+</ol>
 
       
     </div>
@@ -352,14 +347,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/07/15/Mysql学习数据类型/" rel="next" title="mysqk学习数据类型">
+                <i class="fa fa-chevron-left"></i> mysqk学习数据类型
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/15/mysql基本操作/" rel="prev" title="mysql基本操作">
-                mysql基本操作 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/15/PHPcookie学习/" rel="prev" title="PHPcookie学习">
+                PHPcookie学习 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -412,8 +411,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -455,6 +463,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#索引"><span class="nav-number">1.</span> <span class="nav-text">索引</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#唯一索引"><span class="nav-number">2.</span> <span class="nav-text">唯一索引</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#常规索引"><span class="nav-number">3.</span> <span class="nav-text">常规索引</span></a></li></ol><li class="nav-item nav-level-5"><a class="nav-link" href="#全文索引"><span class="nav-number"></span> <span class="nav-text">全文索引</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#建表原则"><span class="nav-number">1.</span> <span class="nav-text">建表原则</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

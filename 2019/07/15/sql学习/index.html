@@ -79,17 +79,19 @@
 
 
 
-<meta name="description" content="使用mysqli()类，返回一个对象 1@$db = new mysqli(&amp;apos;127.0.0.1,&amp;apos;root&amp;apos;,&amp;apos;root&amp;apos;&amp;apos;)  面向过程，返回一个资源 1@$db=mysqli_connect(&amp;apos;127.0.0.1&amp;apos;,&amp;apos;root&amp;apos;,&amp;apos;&amp;apos;root);  MySQL错误提示 1m">
+<meta name="description" content="sql学习： sql是关系型数据库，RDBMS是关系型数据库管理系统，是所有关系型数据库的基础； 数据库表：RDMBS中的数据储存在被成为表的数据对象中，数据包由行和列组成。  字段每张表都可以划分出很小的一块数据，这块数据被称为字段，由行与列的坐标组成； NULLnull值是以空白形式出现的值，表示该记录在此字段处没有设值； SQL约束DEFAULT 约束：提供该列数据未指定时所采用的默认值 N">
 <meta property="og:type" content="article">
-<meta property="og:title" content="连接数据库">
-<meta property="og:url" content="http://yoursite.com/2019/07/15/连接数据库/index.html">
+<meta property="og:title" content="sql学习">
+<meta property="og:url" content="http://yoursite.com/2019/07/15/sql学习/index.html">
 <meta property="og:site_name" content="Guiid">
-<meta property="og:description" content="使用mysqli()类，返回一个对象 1@$db = new mysqli(&amp;apos;127.0.0.1,&amp;apos;root&amp;apos;,&amp;apos;root&amp;apos;&amp;apos;)  面向过程，返回一个资源 1@$db=mysqli_connect(&amp;apos;127.0.0.1&amp;apos;,&amp;apos;root&amp;apos;,&amp;apos;&amp;apos;root);  MySQL错误提示 1m">
+<meta property="og:description" content="sql学习： sql是关系型数据库，RDBMS是关系型数据库管理系统，是所有关系型数据库的基础； 数据库表：RDMBS中的数据储存在被成为表的数据对象中，数据包由行和列组成。  字段每张表都可以划分出很小的一块数据，这块数据被称为字段，由行与列的坐标组成； NULLnull值是以空白形式出现的值，表示该记录在此字段处没有设值； SQL约束DEFAULT 约束：提供该列数据未指定时所采用的默认值 N">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-15T12:48:14.198Z">
+<meta property="og:image" content="c:%5CUsers%5Czhuji%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1556160223783.png">
+<meta property="og:updated_time" content="2019-07-15T13:11:07.135Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="连接数据库">
-<meta name="twitter:description" content="使用mysqli()类，返回一个对象 1@$db = new mysqli(&amp;apos;127.0.0.1,&amp;apos;root&amp;apos;,&amp;apos;root&amp;apos;&amp;apos;)  面向过程，返回一个资源 1@$db=mysqli_connect(&amp;apos;127.0.0.1&amp;apos;,&amp;apos;root&amp;apos;,&amp;apos;&amp;apos;root);  MySQL错误提示 1m">
+<meta name="twitter:title" content="sql学习">
+<meta name="twitter:description" content="sql学习： sql是关系型数据库，RDBMS是关系型数据库管理系统，是所有关系型数据库的基础； 数据库表：RDMBS中的数据储存在被成为表的数据对象中，数据包由行和列组成。  字段每张表都可以划分出很小的一块数据，这块数据被称为字段，由行与列的坐标组成； NULLnull值是以空白形式出现的值，表示该记录在此字段处没有设值； SQL约束DEFAULT 约束：提供该列数据未指定时所采用的默认值 N">
+<meta name="twitter:image" content="c:%5CUsers%5Czhuji%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1556160223783.png">
 
 
 
@@ -119,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/15/连接数据库/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/15/sql学习/">
 
 
 
 
 
-  <title>连接数据库 | Guiid</title>
+  <title>sql学习 | Guiid</title>
   
 
 
@@ -232,7 +234,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/连接数据库/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/sql学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Guiid">
@@ -249,7 +251,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">连接数据库</h1>
+          <h1 class="post-title" itemprop="name headline">sql学习</h1>
         
 
         <div class="post-meta">
@@ -261,7 +263,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-15T20:47:37+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-15T21:10:58+08:00">
                 2019-07-15
               </time>
             
@@ -299,35 +301,39 @@
       
 
       
-        <p>使用mysqli()类，返回一个对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@$db = new mysqli(&apos;127.0.0.1,&apos;root&apos;,&apos;root&apos;&apos;)</span><br></pre></td></tr></table></figure>
-
-<p>面向过程，返回一个资源</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@$db=mysqli_connect(&apos;127.0.0.1&apos;,&apos;root&apos;,&apos;&apos;root);</span><br></pre></td></tr></table></figure>
-
-<p><strong>MySQL错误提示</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqli_connect_errno()</span><br></pre></td></tr></table></figure>
-
-<p>连接mysql数据库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$db-&gt;select_db(db_name)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql_select_db($db,db_name)</span><br></pre></td></tr></table></figure>
-
-<p><strong>查询数据库</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$result=$db-&gt;query(&quot;wwww); 返回结果对象</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$result=mysqli_query(&apos;$db,&apos;&apos;wwww);  返回结果资源</span><br></pre></td></tr></table></figure>
-
-<p><strong>显示返回的行数</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$num=$result-&gt;num_rows;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$num=mysql_num_rows($result);</span><br></pre></td></tr></table></figure>
-
-<p><strong>断开数据库</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$db-&gt;colse()</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqli_colse($db)</span><br></pre></td></tr></table></figure>
-
+        <h4 id="sql学习："><a href="#sql学习：" class="headerlink" title="sql学习："></a>sql学习：</h4><hr>
+<p>sql是关系型数据库，RDBMS是关系型数据库管理系统，是所有关系型数据库的基础；</p>
+<h5 id="数据库表："><a href="#数据库表：" class="headerlink" title="数据库表："></a>数据库表：</h5><p>RDMBS中的数据储存在被成为表的数据对象中，数据包由行和列组成。</p>
+<p><img src="C:%5CUsers%5Czhuji%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1556160223783.png" alt="1556160223783"></p>
+<h6 id="字段"><a href="#字段" class="headerlink" title="字段"></a>字段</h6><p>每张表都可以划分出很小的一块数据，这块数据被称为字段，由行与列的坐标组成；</p>
+<h6 id="NULL"><a href="#NULL" class="headerlink" title="NULL"></a>NULL</h6><p>null值是以空白形式出现的值，表示该记录在此字段处没有设值；</p>
+<h6 id="SQL约束"><a href="#SQL约束" class="headerlink" title="SQL约束"></a>SQL约束</h6><p>DEFAULT 约束：提供该列数据未指定时所采用的默认值</p>
+<p>NOT NULL：保证列中没有NULL值；</p>
+<p>UNIQUE：保证列中的所有数据各不相同</p>
+<p>主键：唯一标识数据表中的行记录</p>
+<p>外键：唯一标识其他表中的一行记录</p>
+<p>CHECK约束：此约束保证列中的所有值满足某一条件</p>
+<p>索引：用于在数据库中快速创建与检索数据；</p>
+<p>主键是每张表中的唯一一条记录的子u但，主键必须要包含唯一值，且不能是null；</p>
+<p>每张表只有一个主键，一个组建可以有多个字段组成，成为组合键；</p>
+<h5 id="SQL分类"><a href="#SQL分类" class="headerlink" title="SQL分类"></a>SQL分类</h5><p>DML与DDL</p>
+<p>DML数据操作语言：</p>
+<ul>
+<li>SELECT 从数据表中获取数据</li>
+<li>UPDATE 更新数据表中的数据</li>
+<li>DELETE 从数据库中删除数据</li>
+<li>INSERT INTO 向数据表中出入数据</li>
+</ul>
+<p>DDL数据定义语言：</p>
+<ul>
+<li>CREATE DATABASE 创建数据库</li>
+<li>ALTER DATABASE 修改数据库</li>
+<li>CREATE TABLE 创建新表</li>
+<li>ALTER TABLE 更改数据库</li>
+<li>DROP TABLE 删除表</li>
+<li>CREATE INDEX 创建索引</li>
+<li>DROP INDEX 删除索引</li>
+</ul>
 
       
     </div>
@@ -352,14 +358,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/07/15/SQL的分类/" rel="next" title="SQL的分类">
+                <i class="fa fa-chevron-left"></i> SQL的分类
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/15/mysql基本操作/" rel="prev" title="mysql基本操作">
-                mysql基本操作 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/15/时间于日期表示/" rel="prev" title="时间于日期表示">
+                时间于日期表示 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -412,8 +422,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -455,6 +474,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#sql学习："><span class="nav-number">1.</span> <span class="nav-text">sql学习：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据库表："><span class="nav-number">1.1.</span> <span class="nav-text">数据库表：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#字段"><span class="nav-number">1.1.1.</span> <span class="nav-text">字段</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#NULL"><span class="nav-number">1.1.2.</span> <span class="nav-text">NULL</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#SQL约束"><span class="nav-number">1.1.3.</span> <span class="nav-text">SQL约束</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SQL分类"><span class="nav-number">1.2.</span> <span class="nav-text">SQL分类</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

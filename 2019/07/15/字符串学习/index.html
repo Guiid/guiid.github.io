@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="sprintf，格式化字符串，两个参数一个是格式化样式，第二个是格式化的数据. 12345&amp;lt;?php$a = &apos;12.3435&apos;;$b = sprintf(&apos;%0.2f&apos;,$a);echo $b;?&amp;gt;  echo，常用的输出方式，它不是一个函数，所以可以不需要括号，一旦加上括号就会出错。它是直接将数据数出来。 1234&amp;lt;?php$a = &quot;helloword!&quot;;echo $a;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字符串学习">
+<meta property="og:url" content="http://yoursite.com/2019/07/15/字符串学习/index.html">
+<meta property="og:site_name" content="Guiid">
+<meta property="og:description" content="sprintf，格式化字符串，两个参数一个是格式化样式，第二个是格式化的数据. 12345&amp;lt;?php$a = &apos;12.3435&apos;;$b = sprintf(&apos;%0.2f&apos;,$a);echo $b;?&amp;gt;  echo，常用的输出方式，它不是一个函数，所以可以不需要括号，一旦加上括号就会出错。它是直接将数据数出来。 1234&amp;lt;?php$a = &quot;helloword!&quot;;echo $a;">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-15T13:12:16.169Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="字符串学习">
+<meta name="twitter:description" content="sprintf，格式化字符串，两个参数一个是格式化样式，第二个是格式化的数据. 12345&amp;lt;?php$a = &apos;12.3435&apos;;$b = sprintf(&apos;%0.2f&apos;,$a);echo $b;?&amp;gt;  echo，常用的输出方式，它不是一个函数，所以可以不需要括号，一旦加上括号就会出错。它是直接将数据数出来。 1234&amp;lt;?php$a = &quot;helloword!&quot;;echo $a;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/15/字符串学习/">
+
+
+
+
+
+  <title>字符串学习 | Guiid</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Guiid</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/字符串学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guiid">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Guiid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">字符串学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-15T21:12:01+08:00">
+                2019-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>sprintf，格式化字符串，两个参数一个是格式化样式，第二个是格式化的数据.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$a = <span class="string">'12.3435'</span>;</span><br><span class="line">$b = sprintf(<span class="string">'%0.2f'</span>,$a);</span><br><span class="line"><span class="keyword">echo</span> $b;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>echo，常用的输出方式，它不是一个函数，所以可以不需要括号，一旦加上括号就会出错。它是直接将数据数出来。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$a = <span class="string">"helloword!"</span>;</span><br><span class="line"><span class="keyword">echo</span> $a;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>printf,格式化数据，两个参数，一个是格式化字符串，第二个是需要格式化的数据。和C语言的字符输出有点类似。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$a= <span class="string">"3.1415926"</span>;</span><br><span class="line">printf(<span class="string">"圆周率是:%0.2f"</span>,$a);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%%返回百分比；%b 二进制;%d 带符号的十进制;</span><br><span class="line">%u无符号十进制;%f浮点型;%F浮点型;</span><br></pre></td></tr></table></figure>
+
+<p>字符串格式化函数，字符串格式化函数就是将字符串处理成特定的格式。我们从表单提交个服务器的字符串在后期使用的时候需要根据我们自己的需要将其处理一下。</p>
+<p>常见分以下几类；</p>
+<p>删除空格</p>
+<ol>
+<li>删除空格与填充；</li>
+<li>将字符串进行大小写转换或者首字母处理；</li>
+<li>与HTML进行交互的字符串；</li>
+<li>其他；</li>
+</ol>
+<p>删除空格:ltrim()、rtrim()、trim()，填充str_pad();</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$a = string;</span><br><span class="line"><span class="keyword">echo</span> ltrim($a); 从字符串左侧删除空格；</span><br><span class="line"><span class="keyword">echo</span> rtrim($a); 从字符串右侧删除空格；</span><br><span class="line"><span class="keyword">echo</span> trim($a); 从字符串两侧开始删除空格</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>有时候为了将敏感数据进行保护，需要在字符串中填充一些无关紧要的数据用来迷惑骇客，使用str_pad()函数，该函数有四个参数，</p>
+<p>参数一：需要进行填充的字符串；</p>
+<p>参数二：填充完成后的长度，如果该值小于原始长度，则不进行任何操作；</p>
+<p>参数三：进行填充的数据字符串;</p>
+<p>参数四：填充的方向,分别是两端，左侧，右侧;STR_PAD_BOTH;STR_PAD_LEFT;STR_PAD_RIGHT；</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$a = <span class="string">'23546'</span>;</span><br><span class="line">$b = <span class="string">'eeg'</span>;</span><br><span class="line"><span class="keyword">echo</span> str_pad($a, <span class="number">8</span>,$b,STR_PAD_BOTH);</span><br></pre></td></tr></table></figure>
+
+<p>字符串的大小写转换与首字母大，通我们在储存用户数据的时候有时候需要不区分大小将数据储存起来，有时候在展示数据的时候又需要特殊的格式，比如字符串首字母大写，完全大写、多单词首字母大写等等，就需要用到函数strtolower()、strtoupper、ucfirst()、Ucwords()；</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>file</span><br></pre></td></tr></table></figure>
+
+<p>有时候我们在操作html的是html可能不会按照我们预期的方向发展，比如我们需要换行的时候习惯于\n，但是html不认识它，如果需要使用就得使用特殊函数nl2br(string)。有时候我们不希望间html标签被使用，就需要将输入在标签进行实体化，就是让它转为特殊字符，常用在公告栏上，htmlspecialchars(string)，它有三个参数，第一个是必须要的是需要转化的字符串，第二个是非必须，用来设置转换单引号还是双引号一起转换，第三个也是非必须用来设定转换的字符集；</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> nl2br(<span class="string">"one\nhello"</span>);</span><br><span class="line"><span class="keyword">echo</span> htmlspecialchars(string);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>还有几个常见的字符串换，一个是反转，就是将字符串到这写，还有一个是格式转换，比如一个国家的货币或者数字格式，还有一个是</p>
+<p>md5函数，有时候可以将用户的密码安装md5格式保存起来；</p>
+<p>反转函数：strrev(string)</p>
+<p>格式函数：number_format()</p>
+<p>md5函数：md5()</p>
+<p>哈希函数：hash_file()</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$abs = <span class="string">"zhujian"</span>;</span><br><span class="line"><span class="comment">// echo md5($abs)."&lt;br&gt;";</span></span><br><span class="line">file_put_contents(<span class="string">'hash.txt'</span>, $abs);</span><br><span class="line"><span class="keyword">echo</span> hash_file(<span class="string">'sha256'</span>,<span class="string">'hash.txt'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>字符串比较函数，可以将两个个字符进行字节间的比较，有函数strcmp(str1, str2)、strcasecmp(str1, str2)、strnatcmp(str1, str2)</p>
+<p>不区分大小的比较：strcmp(str1, str2)</p>
+<p>区分大小写的比较：strcasecmp(str1, str2)</p>
+<p>自然排序法的比较：strnatcmp(str1, str2)</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">strcmp(str1, str2);</span><br><span class="line">strcasecmp(str1, str2);</span><br><span class="line">strnatcmp(str1, str2)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/15/时间于日期表示/" rel="next" title="时间于日期表示">
+                <i class="fa fa-chevron-left"></i> 时间于日期表示
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Guiid</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Guiid</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

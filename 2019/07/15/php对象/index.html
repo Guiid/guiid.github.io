@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="title: PHP面向对象学习2 date: 2019-05-16 15:02:50 tags: PHP面向对象 -– 面向对象是重中之中，所以学习的时间也比较长，面向对象学习过程中理解思维大约占70%左右，其余30不过是语法的记忆而已。 今天开始学面向对象的继承、常量、抽象类、接口类、静态、重载; ##### 继承 一个类共享另一个类的一部分或者全部属性或者方法就称之为继承，继承的类成为子类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php对象">
+<meta property="og:url" content="http://yoursite.com/2019/07/15/php对象/index.html">
+<meta property="og:site_name" content="Guiid">
+<meta property="og:description" content="title: PHP面向对象学习2 date: 2019-05-16 15:02:50 tags: PHP面向对象 -– 面向对象是重中之中，所以学习的时间也比较长，面向对象学习过程中理解思维大约占70%左右，其余30不过是语法的记忆而已。 今天开始学面向对象的继承、常量、抽象类、接口类、静态、重载; ##### 继承 一个类共享另一个类的一部分或者全部属性或者方法就称之为继承，继承的类成为子类">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-15T13:09:26.051Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="php对象">
+<meta name="twitter:description" content="title: PHP面向对象学习2 date: 2019-05-16 15:02:50 tags: PHP面向对象 -– 面向对象是重中之中，所以学习的时间也比较长，面向对象学习过程中理解思维大约占70%左右，其余30不过是语法的记忆而已。 今天开始学面向对象的继承、常量、抽象类、接口类、静态、重载; ##### 继承 一个类共享另一个类的一部分或者全部属性或者方法就称之为继承，继承的类成为子类">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/15/php对象/">
+
+
+
+
+
+  <title>php对象 | Guiid</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Guiid</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/php对象/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guiid">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Guiid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">php对象</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-15T21:09:11+08:00">
+                2019-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>title: PHP面向对象学习2</p>
+<p>date: 2019-05-16 15:02:50</p>
+<p>tags: PHP面向对象</p>
+<p>-–</p>
+<p>面向对象是重中之中，所以学习的时间也比较长，面向对象学习过程中理解思维大约占70%左右，其余30不过是语法的记忆而已。</p>
+<p>今天开始学面向对象的继承、常量、抽象类、接口类、静态、重载;</p>
+<p>##### 继承</p>
+<p>一个类共享另一个类的一部分或者全部属性或者方法就称之为继承，继承的类成为子类或者派生类，被继承的类称为父类、基类、或者超类。PHP是属于单继承的语法，就是一个类之类继承一个父类，不能再另外继承其他的父类，也就是只能认一个爹。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">*<span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;*</span><br><span class="line"></span><br><span class="line">​    *<span class="keyword">public</span> $name;*</span><br><span class="line"></span><br><span class="line">​    *<span class="keyword">public</span> $age;*</span><br><span class="line"></span><br><span class="line">​    *<span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($name = <span class="string">" "</span>,$age=<span class="number">1</span>)</span>*</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">​    *</span>&#123;*</span><br><span class="line"></span><br><span class="line">​        *<span class="keyword">$this</span>-&gt;name = $name;*</span><br><span class="line"></span><br><span class="line">​        *<span class="keyword">$this</span>-&gt;age = $age;*</span><br><span class="line"></span><br><span class="line">​    *&#125;*</span><br><span class="line"></span><br><span class="line">​    *<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">say</span><span class="params">()</span></span>&#123;*</span><br><span class="line"></span><br><span class="line">​        *<span class="keyword">echo</span> <span class="string">""</span>;*</span><br><span class="line"></span><br><span class="line">​    *&#125;*</span><br><span class="line"></span><br><span class="line">*&#125;*</span><br><span class="line"></span><br><span class="line">*<span class="class"><span class="keyword">class</span> <span class="title">Studen</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;*</span><br><span class="line"></span><br><span class="line">​    *<span class="keyword">private</span> $sex;*</span><br><span class="line"></span><br><span class="line">​    *<span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($name = <span class="string">" "</span>,$age=<span class="number">1</span>,$sex=<span class="string">"男"</span>)</span>*</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">​    *</span>&#123;*</span><br><span class="line"></span><br><span class="line">​        *<span class="keyword">$this</span>-&gt;name = $name;*</span><br><span class="line"></span><br><span class="line">​        *<span class="keyword">$this</span>-&gt;age = $age;*</span><br><span class="line"></span><br><span class="line">​        *<span class="keyword">$this</span>-&gt;sex = $sex;*</span><br><span class="line"></span><br><span class="line">​    *&#125;*</span><br><span class="line"></span><br><span class="line">*&#125;*</span><br></pre></td></tr></table></figure>
+
+<p>子类在继承父类的时候可以将父类的属性或者方法单独继承下来也可以全部继承下来，就像你可以继承你爸抽烟、喝酒的缺点但是也可以只是继承他抽烟的缺点。子类在继承父类的内容的时候需要重写父类的内容。同时子类也可以自己单独设置属性或者方法，你继承你父亲抽烟的同时也可以拥有自己的有点比如健身。注意在父类设置属性或者方法的是不能将属性或者方法设置为私有的，否则就无法进行继承，如果你需要保护属性或者方法倒是可以将里面的内容设置为受限制的<strong><em>\</em>protected**</strong>。</p>
+<p>在继承子类继承父类的时候重写里面的内容被成为重载，在进行构造函数进行重载的时候需要将父类的内容全部抄写下来，这样就会很繁琐，而且也容易出错，所以用parent(父)代表这个父类，用父类去重载的时候使用范围解析符号<strong>“::”</strong></p>
+<h6 id="列代码"><a href="#列代码" class="headerlink" title="列代码"></a>列代码</h6><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $name;</span><br><span class="line">    <span class="keyword">public</span> $age;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($name=<span class="string">""</span>,$age=<span class="number">1</span>)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;name = $name;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;age = $age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">say</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"我是:"</span>.<span class="keyword">$this</span>-&gt;name.<span class="string">"&lt;br&gt;"</span>.<span class="string">"我今年："</span>.<span class="keyword">$this</span>-&gt;age.<span class="string">"岁，这是公开方法&lt;br&gt;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">extends</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $career;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($name,$age,$career)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">parent</span>::__construct($name,$age);</span><br><span class="line">        <span class="keyword">$this</span>-&gt;career=$career;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">say</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">parent</span>::say();</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"我是一个"</span>.<span class="keyword">$this</span>-&gt;career.<span class="string">"."</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$p1 = <span class="keyword">new</span> A(<span class="string">"张"</span>,<span class="number">23</span>,<span class="string">"学生"</span>);</span><br><span class="line">$p1-&gt;say();</span><br></pre></td></tr></table></figure>
+
+<h5 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h5><p>在类中赋值后就不变的量叫做常量，通常用”const”来表示，这个常量在被赋值后如果试图去改变它就会报错。const常用在接口类中，常量通常属于类不属于对象，所以访问需要用特殊符号self，self代表类；</p>
+<p>列代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    <span class="keyword">const</span> NAME = <span class="string">"小妹妹"</span>;</span><br><span class="line">    <span class="keyword">public</span> $name;</span><br><span class="line">    <span class="keyword">public</span> $age;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($name=<span class="string">""</span>,$age=<span class="number">1</span>)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;name = $name;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;age = $age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">say</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"我的名字叫"</span>.<span class="keyword">$this</span>-&gt;name.<span class="string">"我今年"</span>.<span class="keyword">$this</span>-&gt;age.<span class="string">"。&lt;br&gt;我是一个"</span>.<span class="keyword">self</span>::NAME;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$p1 = <span class="keyword">new</span> B(<span class="string">"张三"</span>,<span class="number">23</span>);</span><br><span class="line">$p1-&gt;say();</span><br></pre></td></tr></table></figure>
+
+<h5 id="静态"><a href="#静态" class="headerlink" title="静态"></a>静态</h5><p>在类中进行权限控制的时候还有一个字符<strong>static</strong>，static翻译静态的意思，static修饰过的内容本身就属于类，不在属于对象，所以内部访问也不能用常见的this访问，需要用类自身去访问，类自身访问的关键词是self。static可以不需要实例化就直接访问.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> $name=<span class="string">"张三"</span>;</span><br><span class="line">    <span class="keyword">public</span> $vars;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($run)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;vars = $run;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">say</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"我的名字叫"</span>.<span class="keyword">self</span>::$name.<span class="string">"。&lt;br&gt;我会"</span>.<span class="keyword">$this</span>-&gt;vars;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$p1 = <span class="keyword">new</span> A(<span class="string">"跑步"</span>);</span><br><span class="line"><span class="keyword">echo</span> A::$name;</span><br><span class="line">$p1-&gt;say();</span><br></pre></td></tr></table></figure>
+
+<p>从外部访问被static修饰的属性或者方法时候可以使用对象引用或者类名访问，但是通常都建议使用类名；</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> $name=<span class="string">"张三"</span>;</span><br><span class="line">    <span class="keyword">public</span> $vars;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($run)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;vars = $run;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">say</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"我的名字叫"</span>.<span class="keyword">self</span>::$name.<span class="string">"。&lt;br&gt;我会"</span>.<span class="keyword">$this</span>-&gt;vars;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">eye</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;br&gt;我的眼睛是黑色"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$p1 = <span class="keyword">new</span> A(<span class="string">"跑步"</span>);</span><br><span class="line"><span class="keyword">echo</span> A::$name;</span><br><span class="line">$p1-&gt;say();</span><br><span class="line">$p1-&gt;eye();</span><br></pre></td></tr></table></figure>
+
+<h5 id="抽象类和接口类"><a href="#抽象类和接口类" class="headerlink" title="抽象类和接口类"></a>抽象类和接口类</h5><p>抽象类从名字上来就知道它是一种类，但是它不是常见的类，常见的类在写的时候我们将类中的方法全部实现了出来。在抽象类中，所有的方法都没有实现，它属于中特殊的类，一种不实现任何方法的类。抽象类在书写的时候需要在前面加上特殊的字符<strong>abstract</strong>来修饰，abstract翻译抽象的意思，也不难理解，由下代码可知，抽象类的方法由于没有完全实现，所以它是一个半成品。另外由于抽象类需要给其他类使用，所以不能设置它的属性或者方法为private，一旦你修饰了就会导致其他类无法使用它。</p>
+<p>抽象方法的使用比较简单，只需要用一个子类去继承它就行了。只要将里面的方法全部实现，这个抽象类就算完成。</p>
+<p>列代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">F</span></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> $name;</span><br><span class="line">    <span class="keyword">protected</span> $age;   </span><br><span class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">say</span><span class="params">()</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">extends</span> <span class="title">F</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">say</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"将方法实现出来!"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于抽象类是含有一个未实现的方法组成，所以一旦在以后以后的类中但凡是遇到未实现方法的类都是抽象类。</p>
+<p>众所周知，由于PHP属于单继承模式，一旦一个子类继承了一个父类，那么它就无法在继承其他类了。为了解决这个问题在PHP中便引入了更加抽象的类，那就是接口类。接口类的属性不能是变量，只能是一个固定的值。需要用常量const来表示。刚才说了接口类是一个特殊的抽象的类，所以它的方法与抽象类一致，也是一种未完成的方法；</p>
+<p>列代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">G</span></span>&#123;</span><br><span class="line"><span class="keyword">const</span> $NAME = <span class="string">"张三"</span>;</span><br><span class="line"><span class="keyword">const</span> $AGE = <span class="number">23</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">say</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">H</span> <span class="keyword">extends</span> <span class="title">G</span></span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">say</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"实现出来"</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>刚才说到接口类主要用来解决单继承的问题，将其变为多继承，既然是多继承，那么子类就需要在父类的基础上引入一个或者多个接口类才能体现多继承，引入一个父类需要用关键字<strong>extends</strong>，引入多个父类就需要关键字<strong>implements</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">extends</span> <span class="title">F</span> <span class="keyword">implements</span> <span class="title">H</span>,<span class="title">G</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">say</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"子类全部实现"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/15/PHPcookie学习/" rel="next" title="PHPcookie学习">
+                <i class="fa fa-chevron-left"></i> PHPcookie学习
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/15/PHP对象学习第三天/" rel="prev" title="PHP对象学习第三天">
+                PHP对象学习第三天 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Guiid</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#列代码"><span class="nav-number">1.</span> <span class="nav-text">列代码</span></a></li></ol><li class="nav-item nav-level-5"><a class="nav-link" href="#常量"><span class="nav-number"></span> <span class="nav-text">常量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#静态"><span class="nav-number"></span> <span class="nav-text">静态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#抽象类和接口类"><span class="nav-number"></span> <span class="nav-text">抽象类和接口类</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Guiid</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

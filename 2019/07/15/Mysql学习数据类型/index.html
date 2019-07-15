@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="字段类型一个sql表由两部分组成，一部分是表结构、一部分是比表内容。建立表结构就是写表列功能，告诉数据库这一列应该放什么类型的数据，放的内容叫什么。表内容就是往表中填充数据。  简单的举例就像excel表格一样。我们建立excel的时候会选择适合我们需要的表格数量，如果太多就浪费掉。同样，建立sql表的时候我们也需要选择我们适合的空间，如果太多也是会浪费掉储存空间，太少就会导致不够用。所以我们建表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysqk学习数据类型">
+<meta property="og:url" content="http://yoursite.com/2019/07/15/Mysql学习数据类型/index.html">
+<meta property="og:site_name" content="Guiid">
+<meta property="og:description" content="字段类型一个sql表由两部分组成，一部分是表结构、一部分是比表内容。建立表结构就是写表列功能，告诉数据库这一列应该放什么类型的数据，放的内容叫什么。表内容就是往表中填充数据。  简单的举例就像excel表格一样。我们建立excel的时候会选择适合我们需要的表格数量，如果太多就浪费掉。同样，建立sql表的时候我们也需要选择我们适合的空间，如果太多也是会浪费掉储存空间，太少就会导致不够用。所以我们建表">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="c:%5CUsers%5Czhuji%5CDocuments%5C20190520154419.png">
+<meta property="og:image" content="c:%5CUsers%5Czhuji%5CDocuments%5C%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190520160139.png">
+<meta property="og:image" content="c:%5CUsers%5Czhuji%5CDocuments%5C%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190520214419.png">
+<meta property="og:image" content="c:%5CUsers%5Czhuji%5CDocuments%5C%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190520215118.png">
+<meta property="og:updated_time" content="2019-07-15T13:07:43.645Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysqk学习数据类型">
+<meta name="twitter:description" content="字段类型一个sql表由两部分组成，一部分是表结构、一部分是比表内容。建立表结构就是写表列功能，告诉数据库这一列应该放什么类型的数据，放的内容叫什么。表内容就是往表中填充数据。  简单的举例就像excel表格一样。我们建立excel的时候会选择适合我们需要的表格数量，如果太多就浪费掉。同样，建立sql表的时候我们也需要选择我们适合的空间，如果太多也是会浪费掉储存空间，太少就会导致不够用。所以我们建表">
+<meta name="twitter:image" content="c:%5CUsers%5Czhuji%5CDocuments%5C20190520154419.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/15/Mysql学习数据类型/">
+
+
+
+
+
+  <title>mysqk学习数据类型 | Guiid</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Guiid</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/Mysql学习数据类型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guiid">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Guiid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mysqk学习数据类型</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-15T21:07:14+08:00">
+                2019-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="字段类型"><a href="#字段类型" class="headerlink" title="字段类型"></a>字段类型</h4><p>一个sql表由两部分组成，一部分是表结构、一部分是比表内容。建立表结构就是写表列功能，告诉数据库这一列应该放什么类型的数据，放的内容叫什么。表内容就是往表中填充数据。</p>
+<p><img src="C:%5CUsers%5Czhuji%5CDocuments%5C20190520154419.png" alt></p>
+<p>简单的举例就像excel表格一样。我们建立excel的时候会选择适合我们需要的表格数量，如果太多就浪费掉。同样，建立sql表的时候我们也需要选择我们适合的空间，如果太多也是会浪费掉储存空间，太少就会导致不够用。所以我们建表的原则是够用，不浪费。</p>
+<p>sql中的内容也是数据类型的，如果上面表格中编号是整形、姓名是字符型、出生日期是日期型，一张sql表大概也是这三类组成。</p>
+<h6 id="数值类型"><a href="#数值类型" class="headerlink" title="数值类型"></a>数值类型</h6><p>​    tinyint</p>
+<p>​    Smallint</p>
+<p>​    Mediumint</p>
+<p>​    int</p>
+<p>​    bigint</p>
+<p>他们不同之处在于占据空间于储存范围。</p>
+<p><img src="C:%5CUsers%5Czhuji%5CDocuments%5C%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190520160139.png" alt></p>
+<p>Tinyint默认储存是-128-127，unsigend：无符号类型，影响储存范围；M，代表宽度，(zerofill时才有意义)；zerofill：零填充。</p>
+<p>浮点型有三种：FLOAT、DOUBLE和DECIMAL;</p>
+<p>声明整形的时候后面加上UNSIGEND可以限制取值范围不包括负数。</p>
+<p>字符串类型，mysql跟php一样，也能识别字符串类型，mysql可以用字符串形式来保存图片或者音频。mysql中的字符串也是单引号与双引号包含起来的。</p>
+<p><img src="C:%5CUsers%5Czhuji%5CDocuments%5C%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190520214419.png" alt></p>
+<h6 id="日期和时间类"><a href="#日期和时间类" class="headerlink" title="日期和时间类"></a>日期和时间类</h6><p>时间与日期格式有五种分别是DATE、TIME、DATETIME、TIMESTAMP、YEAR</p>
+<p><img src="C:%5CUsers%5Czhuji%5CDocuments%5C%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190520215118.png" alt></p>
+<p>每个时间与日期都有一个零值。当插入非法字符的时候就用零添加。另外也可以使用整形列类储存unix时间戳，代替日期与时间。</p>
+<h6 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h6><p>字符串类型分为大三类</p>
+<ol>
+<li>普通小段文本，char、varchar，char是固定类型的如果内容不够时则用空白填充，后面要跟字符串长度，varchar是可变长度，也就是内容会跟随内容自动增缩。</li>
+<li>TEXT和BLOB类型，次类型大小可以改变适用于长文本或者二级制数据，BLOB适合图片或者音频。</li>
+<li>SET与ENUM，这两个都是特殊的类型，SET类型用来指定列中的值必须来自一个特定集合中的特定值。</li>
+</ol>
+<h6 id="NULL"><a href="#NULL" class="headerlink" title="NULL"></a>NULL</h6><p>null表示没有值或者未知的值，但不表示为空。null是不能进行运算的，因为认识值运算都i是null值。</p>
+<h4 id="字段属性"><a href="#字段属性" class="headerlink" title="字段属性"></a>字段属性</h4><p>新建表的是仅仅是字段名、字段类型还不够，还需要增加一个字段属性，比如自动增加、自动补0和默认的设置等；</p>
+<p><strong>UNSIGNED</strong></p>
+<p>该属性只能用作数值类型，被它修饰的字段名不能为负数。</p>
+<p><strong>NOT NULL</strong></p>
+<p>表示表中的所有行的次属性必须有一个值，如果没有该行则是null。</p>
+<h6 id="AUTO-INCREMENT"><a href="#AUTO-INCREMENT" class="headerlink" title="AUTO_INCREMENT"></a>AUTO_INCREMENT</h6><p>表示如果再插入行的时候没有值，则自动产生一个唯一的标识符。</p>
+<h5 id="ZEROFILL"><a href="#ZEROFILL" class="headerlink" title="ZEROFILL"></a>ZEROFILL</h5><p>当设置次属性时候则空余部分使用0来填充，如果设置了次类型则自动成为UNSIGED类型。</p>
+<p><strong>一个完整的表家建立方法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE TBname(字段名[字段类型][字段属性][字段默认值][主键][索引])</span><br></pre></td></tr></table></figure>
+
+<p>关键字if not exists防止重复</p>
+<h6 id="修改表结构"><a href="#修改表结构" class="headerlink" title="修改表结构"></a>修改表结构</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名 ACTION 新建字段 类型属性 FIRST AFTER;</span><br></pre></td></tr></table></figure>
+
+<p>ACTION需要操作的语句</p>
+<ol>
+<li>ADD 为已存在的表增加新语句</li>
+<li>CHANGE、MODIFY 为指定语句更改原字段类型，两者之间的区别在于MODIFY可以更改名字；</li>
+<li>RENAME AS 为指定旧表修改名字</li>
+<li>drop table 删除指定的列</li>
+<li>DROP INDEX 删除指定索引；</li>
+</ol>
+<hr>
+<h6 id="查询表中内容"><a href="#查询表中内容" class="headerlink" title="查询表中内容"></a>查询表中内容</h6><p>查询所有内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 字段 from tablename</span><br></pre></td></tr></table></figure>
+
+<p>查询特定条件的内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from tablename where 条件;</span><br></pre></td></tr></table></figure>
+
+<p>条件语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">等于=，大于&gt;，小于&lt;，大于或者等于，小于或等于，不等于!=，is not null地址不能为空,is null地址为空;</span><br><span class="line">in测定一个值是否再集合中，not in是否不在集合中，LIKE，模式匹配用简单的mysql模式匹配检查一个值是否匹配于一个模式中；</span><br><span class="line">NOT LIKE，检查一个值是否不匹配于一个模式；</span><br><span class="line">REGXP，检查一个值是否匹配一个常规表达式；</span><br></pre></td></tr></table></figure>
+
+<p>多表查询，再商品购买查询的是可能要查询购买人、商品信息等，就使用夺标查询；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 表名.字段名1,表名.字段名2，表名.字段名2 from 表1,表2 where 条件,条件2</span><br></pre></td></tr></table></figure>
+
+<p>别名，再查询表内容的是可以为显示的字段名重新命名一个名字，称呼为别名用as来命名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select name as &apos;姓名&apos;,city as &apos;籍贯&apos; from customers where id&lt;=2;</span><br></pre></td></tr></table></figure>
+
+<p>使用特定顺序显示，使用语法ODER BY。使用升序asc关键字，使用降序desc</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select name from tablename oder by asc;</span><br></pre></td></tr></table></figure>
+
+<h6 id="分组与合计数据"><a href="#分组与合计数据" class="headerlink" title="分组与合计数据"></a>分组与合计数据</h6><p>当我们需要知道多少行分成一个特定的集合或者一列的平均值。</p>
+<p>合计函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AVG:计算列的平均值。COUNT：指定列的时候前面DISTINCT则计算本列中不同值的列数。</span><br><span class="line">MIN：本列中最小值。MIX本列中最大值。SUN：本列中的所有和</span><br></pre></td></tr></table></figure>
+
+<h5 id="选择需要返回的行"><a href="#选择需要返回的行" class="headerlink" title="选择需要返回的行"></a>选择需要返回的行</h5><p>select中有个比较特别实用的子句LIMIT，该关键字返回查询的行，拥有两个参数，一个是开始行号，一个是返回行数，注意sql中行数是从0开始的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select name from tablename limit 2,3</span><br></pre></td></tr></table></figure>
+
+<h6 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h6><p>在原有的表中跟新数据，和alter不一样，不需要设计到更改表结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE tablename set 新字段 where 条件;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/15/mysql基本操作/" rel="next" title="mysql基本操作">
+                <i class="fa fa-chevron-left"></i> mysql基本操作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/15/mysql学习第四天/" rel="prev" title="mysql学习第四天">
+                mysql学习第四天 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Guiid</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#字段类型"><span class="nav-number">1.</span> <span class="nav-text">字段类型</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#数值类型"><span class="nav-number">1.0.1.</span> <span class="nav-text">数值类型</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#日期和时间类"><span class="nav-number">1.0.2.</span> <span class="nav-text">日期和时间类</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#字符串类型"><span class="nav-number">1.0.3.</span> <span class="nav-text">字符串类型</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#NULL"><span class="nav-number">1.0.4.</span> <span class="nav-text">NULL</span></a></li></ol></li></ol><li class="nav-item nav-level-4"><a class="nav-link" href="#字段属性"><span class="nav-number">2.</span> <span class="nav-text">字段属性</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#AUTO-INCREMENT"><span class="nav-number">2.0.1.</span> <span class="nav-text">AUTO_INCREMENT</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ZEROFILL"><span class="nav-number">2.1.</span> <span class="nav-text">ZEROFILL</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#修改表结构"><span class="nav-number">2.1.1.</span> <span class="nav-text">修改表结构</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#查询表中内容"><span class="nav-number">2.1.2.</span> <span class="nav-text">查询表中内容</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#分组与合计数据"><span class="nav-number">2.1.3.</span> <span class="nav-text">分组与合计数据</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#选择需要返回的行"><span class="nav-number">2.2.</span> <span class="nav-text">选择需要返回的行</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#UPDATE"><span class="nav-number">2.2.1.</span> <span class="nav-text">UPDATE</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Guiid</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
