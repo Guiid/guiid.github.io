@@ -229,6 +229,183 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/在Ubuntu下安装MongoDB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guiid">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Guiid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/15/在Ubuntu下安装MongoDB/" itemprop="url">在Ubuntu下安装MongoDB</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-15T21:18:55+08:00">
+                2019-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>MongoDB 是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。在高负载的情况下，添加更多的节点，可以保证服务器性能。MongoDB 旨在为WEB应用提供可扩展的高性能数据存储解决方案。MongoDB 将数据存储为一个文档，数据结构由键值(key=&gt;value)对组成。MongoDB 文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组<br><img src="https://i.loli.net/2019/07/15/5d2c7f4340bfd70171.png" alt="crud-annotated-document.png"></p>
+</blockquote>
+<hr>
+<h3 id="安装MongoDB"><a href="#安装MongoDB" class="headerlink" title="安装MongoDB"></a>安装MongoDB</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mongodb</span><br></pre></td></tr></table></figure>
+
+<p>然后输入版本号验证</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo -version</span><br></pre></td></tr></table></figure>
+
+<p>启动和关闭命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service mongodb start</span><br><span class="line">service mongodb stop</span><br></pre></td></tr></table></figure>
+
+<p>输入命令查看是否启动成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgrep mongo -l</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用MongoDB"><a href="#使用MongoDB" class="headerlink" title="使用MongoDB"></a>使用MongoDB</h3><p>进入shell命令模式，mongo默认连接的数据库是test数据，Mongo启动后输入mongo就进入shell命令模式了。<br>首先显示数据库列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show dbs</span><br></pre></td></tr></table></figure>
+
+<p>然后显示数据集合</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show collections</span><br></pre></td></tr></table></figure>
+
+<p>查找所有的用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show users</span><br></pre></td></tr></table></figure>
+
+<p>连接数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use yourDB</span><br></pre></td></tr></table></figure>
+
+<h6 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use dbname</span><br></pre></td></tr></table></figure>
+
+<p>MongoDB与关系型数据库不同，在关系型数据库中如果使用use连接未建立的数据库会出错，但是MongoDB不会出错，它自动创建一个数据库。<br>数据库创建后创建一个数据集合，MongoDB中的数据集合相当于关系型中的Table数据表。创建数据集合与数据库类似，如果不存在会自动创建，创建语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.createCollection(&apos;name&apos;)</span><br></pre></td></tr></table></figure>
+
+<p>创建数据库后就是插入数据，插入数据有两种方式：insert与save<br>两则不同之处在于当_id存在的是insert不做任何操作，而save则是需要做一个更新的操，如果_id不加则都是插入数据操作；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db.tbname,insert(&#123;_id:1,sname:&apos;zhangsan&apos;,sage:20&#125;)</span><br><span class="line">db.tbname.save(&#123;_id:1,sname:&apos;zhangsan&apos;,sage:20&#125;)</span><br></pre></td></tr></table></figure>
+
+<h6 id="数据的查找"><a href="#数据的查找" class="headerlink" title="数据的查找"></a>数据的查找</h6><p>语法是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.tbname.find(criteria,filterDisplay)</span><br></pre></td></tr></table></figure>
+
+<p><strong>criteria:</strong>是查询条件，为可选项<br><strong>filterDispla:</strong>筛选显示部分数据，为可选项，当选择的时候第一项需要保持为空，将其占位。<br><strong>查询所有的数据</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.tbname.find()</span><br></pre></td></tr></table></figure>
+
+<p><strong>查询给定条件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.tbname.find(&#123;sname:&apos;list&apos;&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>查询指定列的数据</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.tbname.find(&#123;&#125;&#123;sname:1,sage:1&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>查询or条件的语句</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.tbname.find(&#123;$or:[&#123;sage:22&#125;,&#123;sage:25&#125;]&#125;)</span><br></pre></td></tr></table></figure>
+
+<h6 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h6><p>修改语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.tbname.update(criteria,objnew,upsert,multi)</span><br></pre></td></tr></table></figure>
+
+<p><strong>criteria:</strong>条件语句，相当于sql中的where<br><strong>objnew:</strong>update的对象和一些更新的操作符等；<br><strong>upsert:</strong>如果不存在update的记录，是否插入objnew，ture为擦汗如，默认为false<br><strong>multi:</strong>mongodb默认是false,只更新找到的第一条记录，如果这个参数为true,就把按条件查出来多条记录全部更新。默认false，只修改匹配到的第一条数据。<br>其中criteria和objNew是必选参数，upsert和multi可选参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.student.update(&#123;name: &apos;lisi&apos;&#125;, &#123;$set: &#123;add: hanghzou&#125;&#125;, false, true) #相当于：update student set add: hanghzou where name: &apos;lisi&apos;;</span><br></pre></td></tr></table></figure>
+
+<h6 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.tbname.remove(&#123;name:&apos;chenliu&apos;&#125;)</span><br></pre></td></tr></table></figure>
+
+<h6 id="退出shell命令模式"><a href="#退出shell命令模式" class="headerlink" title="退出shell命令模式"></a>退出shell命令模式</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br><span class="line">Ctrl+C</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/字符串学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1565,157 +1742,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/mysql基本操作/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Guiid">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Guiid">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/15/mysql基本操作/" itemprop="url">mysql基本操作</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-15T21:03:53+08:00">
-                2019-07-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>mysql是一个数据库管理系统，sql是数据管理语言，数据管理语言有以下四种；</p>
-<p>数据定义语言：定义管理数据库或者数据表如CREATE、DROP、ALTER等；</p>
-<p>数据操作语言：用户操作数据库对象中所包含的数据INSERT、UPDATE、DELETE等；</p>
-<p>数据查询语言：对表单或者其中的数据进行查询；</p>
-<p>数据控制语言：用来管理数据库的语言如GRANT、REVPKE等；</p>
-<p>登录接数据库，数据可以放再本地，也可以放在外服务器中，登录格式如下</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h <span class="number">127.0</span>.<span class="number">0.1</span> -u root -proot</span><br></pre></td></tr></table></figure>
-
-<p>-h：后面需要跟数据库的地址，如果是本地的则是127.0.0.1胡总二号localhost，如果是其他服务器则跟相应IP</p>
-<p>-u：是表示user用户的意思，跟登录名字；</p>
-<p>-p：表示密码password的意思，后面紧跟密码，密码是以密文形式传入的，如果不跟的是在以后的输入中是无法看见的；</p>
-<h6 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRANT 权限 ON 数据库名.数据库表 TO 用户名@数据库地址 IDENTIFIED BY "密码";</span><br></pre></td></tr></table></figure>
-
-<h6 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h6><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE DBNAME</span><br></pre></td></tr></table></figure>
-
-<p>在定义数据库的是要注意有些系统是区分大小的，比如linux的区分的，所以在数据库定义的时候需要增加IF NOT EXISTS。</p>
-<h6 id="查询数据库于连接数据库"><a href="#查询数据库于连接数据库" class="headerlink" title="查询数据库于连接数据库"></a>查询数据库于连接数据库</h6><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SHOW DATABASE DBNAME;</span><br><span class="line">USE DBNAME;</span><br></pre></td></tr></table></figure>
-
-<h6 id="创建数据表"><a href="#创建数据表" class="headerlink" title="创建数据表"></a>创建数据表</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE tableName(字段名 字段类型 非空 默认属性，);</span><br></pre></td></tr></table></figure>
-
-<h6 id="向数据表中插入数据"><a href="#向数据表中插入数据" class="headerlink" title="向数据表中插入数据"></a>向数据表中插入数据</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INSERT into tablename values(null,字段值);</span><br><span class="line">INSERT INTO tablename(字段名) VALUES(字段值)</span><br></pre></td></tr></table></figure>
-
-<h6 id="向数据表中查询数据"><a href="#向数据表中查询数据" class="headerlink" title="向数据表中查询数据"></a>向数据表中查询数据</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 字段1,字段2 from 表名；</span><br></pre></td></tr></table></figure>
-
-<h6 id="更改表中的数据"><a href="#更改表中的数据" class="headerlink" title="更改表中的数据"></a>更改表中的数据</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update book set 字段名=字段值 where 条件;</span><br></pre></td></tr></table></figure>
-
-<h6 id="删除MySQL中的数据"><a href="#删除MySQL中的数据" class="headerlink" title="删除MySQL中的数据"></a>删除MySQL中的数据</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from 表 where 条件;</span><br></pre></td></tr></table></figure>
-
-<h6 id="取消用户权限"><a href="#取消用户权限" class="headerlink" title="取消用户权限"></a>取消用户权限</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">REVOKE 权限 ON 数据库名.表名 TO 用户@数据库地址 IDENTIFIED BY &quot;密码&quot;;</span><br></pre></td></tr></table></figure>
-
-<h6 id="查看数据表结构"><a href="#查看数据表结构" class="headerlink" title="查看数据表结构"></a>查看数据表结构</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">describe tablename;</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1766,7 +1792,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
